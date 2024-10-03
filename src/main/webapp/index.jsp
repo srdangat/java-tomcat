@@ -30,6 +30,14 @@
             bottom: 0;
             width: 100%;
         }
+        .success {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #28a745;
+            background-color: #d4edda;
+            color: #155724;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -45,4 +53,27 @@
             This web application is built using Java and deployed on Apache Tomcat. 
             It serves as a demonstration of a simple JSP page with a modern design.
         </p>
-        <a
+        
+        <h3>Tomcat Java Project</h3>
+        <p>
+            This project showcases the integration of Tomcat with Jenkins for Continuous Integration and Continuous Deployment (CI/CD).
+        </p>
+        
+        <div class="success">
+            <h4>Deployment Status: Successful</h4>
+            <p>Version: 1.0</p>
+            <p>The application has been successfully deployed using Jenkins CI/CD pipeline, ensuring a smooth and automated process.</p>
+        </div>
+
+        <a href="otherPage.jsp" class="btn btn-primary">Learn More</a>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 My Web App. All rights reserved.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
