@@ -56,13 +56,13 @@
         
         <h3>Tomcat Java Project</h3>
         <p>
-            This project showcases the integration of Tomcat with Jenkins for Continuous Integration and Continuous Deployment (CI/CD).
+            This project showcases the deployment of a Java application version 1.0 using Jenkins for Continuous Integration (CI) and Continuous Deployment (CD), utilizing a master-slave architecture on Tomcat.
         </p>
         
         <div class="success">
             <h4>Deployment Status: Successful</h4>
             <p>Version: 1.0</p>
-            <p>The application has been successfully deployed using Jenkins CI/CD pipeline, ensuring a smooth and automated process.</p>
+            <p>The application has been successfully deployed using a Jenkins CI/CD pipeline, leveraging a master-slave setup to enhance scalability and efficiency in both the integration and deployment processes.</p>
         </div>
 
         <a href="otherPage.jsp" class="btn btn-primary">Learn More</a>
