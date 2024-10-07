@@ -1,0 +1,42 @@
+pipeline {
+    agent {
+        label 'tomcat'
+    }
+    
+    tools {
+        maven 'maven'
+    }
+
+    environment {
+        GIT_REPO_URL = 'https://github.com/srdangat/java-tomcat.git'
+        BRANCH_NAME = 'dev'
+        TOMCAT_URL = 'http://172.31.41.251:8080'
+        CREDENTIALS_ID = 'tomcat-users'
+        WAR_FILE = '**/*.war'
+        CONTEXT_PATH = 'java-sample'
+    }
+
+    stages {
+        stage('Git Checkout') {
+            steps {
+                script {
+                    checkout scmGit(branches: [[name: "*/${BRANCH_NAME}"]], extensions: [], userRemoteConfigs: [[url: GIT_REPO_URL]])
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                script {
+                    sh 'mvn clean install'
+                }
+            }
+        }
+        stage('Deploy to Tomcat') {
+            steps {
+                script {
+                    deploy adapters: [tomcat9(credentialsId: CREDENTIALS_ID, path: '', url: TOMCAT_URL)], contextPath: CONTEXT_PATH, war: WAR_FILE
+                }
+            }
+        }
+    }
+}
