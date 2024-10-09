@@ -1,0 +1,50 @@
+pipeline {
+    agent {
+        label 'tomcat'
+    }
+    tools {
+        maven 'maven'
+    }
+    environment {
+        S3_BUCKET = 'oct-tomcat-artifcats-war'
+        WAR_FILE = 'java-tomcat-maven-example.war'
+        REGION = 'us-east-1'
+        TOMCAT_WEBAPPS_DIR = '/opt/apache-tomcat-9.0.96/webapps/'
+    }
+    
+    stages {
+        stage('Git Checkout') {
+            steps {
+                script {
+                    checkout scm: [
+                        $class: 'GitSCM',
+                        branches: [[name: '*/dev']],
+                        userRemoteConfigs: [[url: 'https://github.com/srdangat/java-tomcat.git']]
+                    ]
+                }
+            }
+        }
+        stage('Build'){
+            steps{
+                script{
+                    sh "mvn clean install"
+                }
+            }
+        }
+        stage('Upload WAR to S3'){
+            steps{
+                script{
+                    sh "aws s3 cp ${WORKSPACE}/target/*.war s3://$S3_BUCKET/ --region $REGION"
+                }
+            }
+        }
+        stage('Download WAR from S3 & Deploy to Tomcat') {
+            steps {
+                script {
+                    sh "aws s3 cp s3://$S3_BUCKET/$WAR_FILE /tmp/$WAR_FILE --region $REGION"
+                    sh "sudo mv /tmp/$WAR_FILE $TOMCAT_WEBAPPS_DIR"
+                }
+            }
+        }
+    }
+}
