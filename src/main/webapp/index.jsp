@@ -54,9 +54,16 @@
             It serves as a demonstration of a simple JSP page with a modern design.
         </p>
         
-        <h3>Tomcat Java Project</h3>
+        <h3>Maven Build and S3 Storage</h3>
         <p>
-            This project showcases the deployment of a Java application version 1.0 using Jenkins for Continuous Integration (CI) and Continuous Deployment (CD), utilizing a master-slave architecture on Tomcat.
+            This project incorporates a Maven build process, where build artifacts are stored in Amazon S3. 
+            Utilizing Jenkins, we automate the process of uploading artifacts to S3 after each successful build.
+        </p>
+        
+        <h4>Deployment Process</h4>
+        <p>
+            After the artifacts are stored in S3, our deployment process involves downloading these artifacts 
+            directly from S3 to the Tomcat server. This ensures that we always deploy the latest version of our application.
         </p>
         
         <div class="success">
