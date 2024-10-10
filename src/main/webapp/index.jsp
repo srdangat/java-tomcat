@@ -68,7 +68,7 @@
         
         <div class="success">
             <h4>Deployment Status: Successful</h4>
-            <p>Version: 1.0</p>
+            <p>Version: 1.0 SSH_AGENT</p>
             <p>The application has been successfully deployed using a Jenkins CI/CD pipeline, leveraging a master-slave setup to enhance scalability and efficiency in both the integration and deployment processes.</p>
         </div>
 
