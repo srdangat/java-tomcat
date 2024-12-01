@@ -76,7 +76,7 @@
     </div>
 
     <div class="footer">
-        <p>&copy; 2024 My Web App. All rights reserved.</p>
+        <p>&copy; 2025 My Web App. All rights reserved.</p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
